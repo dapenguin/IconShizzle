@@ -2,7 +2,7 @@
   "name": "iconshizzle",
   "version": "0.0.1",
   "description": "Convert SVG icons into a SCSS partial along with PNG sprite fallbacks in specified sizes.",
-  "main": "index.js",
+  "main": "lib/iconshizzle.js",
   "directories": {
     "test": "test"
   },
@@ -16,7 +16,7 @@
     "grunt-contrib-nodeunit": "^0.4.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "author": "",
   "license": "ISC"
