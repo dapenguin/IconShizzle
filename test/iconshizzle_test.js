@@ -9,10 +9,29 @@ var IconShizzle = require('../lib/iconshizzle.js');
 var svgLocation = path.join(__dirname,'svg');
 var actualSassFile = path.join(__dirname,'../tmp/testSassSvg.scss');
 var options = {
-	prefix: ".icon-", // used to prefix the name of the file for the CSS classname, .icon- is the default
-	templatePrepend: "/* Start of SVG icons */\n", // this string is prepended to the destinationCSSFile, defaults to ""
-	template: path.join(__dirname,'templates/default-css.hbs'), //template in handlebars, FANCY!
-	templateAppend: "/* End of SVG icons */" // this string is appended to the destinationCSSFile, defaults to ""
+    actualSassFile: 'example/output/result.css',
+    svgCssOptions: {
+		prefix: ".icon-", // used to prefix the name of the file for the CSS classname, .icon- is the default
+		templatePrepend: "/* Start of SVG icons */\n", // this string is prepended to the destinationCSSFile, defaults to ""
+		template: path.join(__dirname,'templates/default-css.hbs'), //template in handlebars, FANCY!
+		templateAppend: "/* End of SVG icons */" // this string is appended to the destinationCSSFile, defaults to ""
+    },
+    pngFileOptions: {
+    	outputFolder: 'example/output/',
+		compress: false,
+		optimizationLevel: 3,
+		dimensions: [
+			{
+				width: "400px",
+				height: "300px"
+			},
+			{
+				width: "40px",
+				height: "40px"
+			}
+		]
+    },
+    pngSpriteOptions: {}
 };
 
 // Variables for storing the actual and expected output of IconShizzle
