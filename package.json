@@ -1,6 +1,6 @@
 {
   "name": "iconshizzle",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convert SVG icons into a SCSS partial along with PNG sprite fallbacks in specified sizes.",
   "repository": {
     "type": "git",
