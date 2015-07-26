@@ -32,7 +32,8 @@ var options = {
 		]
 	},
 	pngSpriteOptions: {
-
+    	template: 'lib/pngIconMixin.hbs',
+    	spriteCssFile: 'tmp/output/pngSprite.css'
 	}
 };
 

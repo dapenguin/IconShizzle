@@ -1,0 +1,39 @@
+$pngIconMap: (
+	w40-h40: (
+		MapPin: (
+			x: 0,
+			y: 0
+		),
+		SpeechBubbles: (
+			x: 0,
+			y: -40px
+		)
+	),
+	w400-h300: (
+		MapPin: (
+			x: 0,
+			y: 0
+		),
+		SpeechBubbles: (
+			x: 0,
+			y: -300px
+		)
+	)
+);
+
+@mixin pngIcon($width, $height, $icon){
+	$spriteName: w + $width + -h + $height;
+
+	$spriteMap: map-get($pngIconMap, $spriteName);
+
+	$iconPositionMap: map-get($spriteMap, $icon);
+
+	background-image: url(#{$spriteName}.png);
+	background-position: map-get($iconPositionMap, x) map-get($iconPositionMap, x);
+	background-repeat: no-repeat;
+}
+
+
+.something {
+	@include pngIcon(40,40,SpeechBubbles);
+}

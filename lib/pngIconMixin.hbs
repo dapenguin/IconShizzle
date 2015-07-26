@@ -1,0 +1,37 @@
+$pngIconMap: (
+{{#each dimensions}}
+	w{{width}}-h{{height}}: (
+	{{#each icons}}
+		{{iconName}}: (
+		{{#if x}}
+			x: -{{x}}px,
+		{{else}}
+			x: 0,
+		{{/if}}
+		{{#if y}}
+			y: -{{y}}px,
+		{{else}}
+			y: 0
+		{{/if}}
+		){{#unless @last}},{{/unless}}
+	{{/each}}
+	){{#unless @last}},{{/unless}}
+{{/each}}
+);
+
+@mixin pngIcon($width, $height, $icon){
+	$spriteName: w + $width + -h + $height;
+
+	$spriteMap: map-get($pngIconMap, $spriteName);
+
+	$iconPositionMap: map-get($spriteMap, $icon);
+
+	background-image: url(#{$spriteName}.png);
+	background-position: map-get($iconPositionMap, x) map-get($iconPositionMap, x);
+	background-repeat: no-repeat;
+}
+
+
+.something {
+	@include pngIcon(40,40,SpeechBubbles);
+}
