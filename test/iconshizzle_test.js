@@ -46,20 +46,24 @@ var expectedSassFile = path.join(__dirname,'expected/testSassSvg.scss');
 var iShizz = new IconShizzle(svgLocation, options);
 
 exports.iconshizzle = {
+	'setUp' : function(done){
+		iShizz.process(function(){
+			done();
+		});
+	},
+	'tearDown' : function(done){
+		done();
+	},
 	'Correct SASS output' : function(test){
 		test.expect(1);
-		iShizz.process(function(){
-			actualOutput = fs.readFileSync(options.actualSassFile,{encoding: 'utf-8'});
-			expectedOutput = fs.readFileSync(expectedSassFile,{encoding: 'utf-8'});
-			test.equal(actualOutput,expectedOutput,'Should give us the expected output in the generated SASS file');
-			test.done();
-		});
+		actualOutput = fs.readFileSync(options.actualSassFile,{encoding: 'utf-8'});
+		expectedOutput = fs.readFileSync(expectedSassFile,{encoding: 'utf-8'});
+		test.equal(actualOutput,expectedOutput,'Should give us the expected output in the generated SASS file');
+		test.done();
 	},
 	'PNG created' : function(test){
 		test.expect(1);
-		iShizz.process(function(){
-			test.ok(fs.existsSync(path.join(options.pngFileOptions.outputFolder,'w400px_h300px','MapPin.png')),'Should give us one of the PNG files created');
-			test.done();
-		});
+		test.ok(fs.existsSync(path.join(options.pngFileOptions.outputFolder,'w400px_h300px','MapPin.png')),'Should give us one of the PNG files created');
+		test.done();
 	},
 };
